@@ -54,7 +54,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit');
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -62,7 +64,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'content' => 'required'
+        ]);
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content
+        ]);
+        return redirect('posts')->with('successAlert', 'have successfully updated!');
     }
 
     /**
@@ -70,6 +80,5 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
     }
 }

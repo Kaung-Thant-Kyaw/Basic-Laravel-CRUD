@@ -10,6 +10,14 @@
             <i class="fas fa-plus-circle"></i>Add New
           </button>
         </a>
+          @if (Session('successAlert'))
+              <div class="alert alert-success alert-dismissible show fade">
+                <strong>{{ Session('successAlert') }}</strong>
+                <button class="close" data-dismiss="alert">
+                  &times;
+                </button>
+              </div>
+          @endif
           <table class="table table-bordered table-hover shadow-md">
             <thead>
               <tr>
@@ -26,9 +34,11 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->content }}</td>
                     <td>
-                      <button class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i> Edit
-                      </button>
+                      <a href="{{url("posts/".$post->id."/edit")}}">
+                        <button class="btn btn-warning btn-sm">
+                          <i class="fa fa-edit"></i> Edit
+                        </button>
+                      </a>
                       <button class="btn btn-danger btn-sm">
                         <i class="fa fa-trash"></i> Delete
                       </button>
