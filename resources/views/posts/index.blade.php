@@ -5,7 +5,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <h5>Posts List</h5>
-        <a href="/posts/create">
+        <a href="{{route('posts.create')}}">
           <button class="btn btn-primary btn-sm float-right">
             <i class="fas fa-plus-circle"></i>Add New
           </button>
@@ -37,7 +37,8 @@
                       <form action="{{ url('posts/'.$post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{url("posts/".$post->id."/edit")}}">
+                        <a href="{{ route('posts.edit',$post->id) }}">
+                          {{-- url("posts/".$post->id."/edit") --}}
                           <button type="button" class="btn btn-warning btn-sm">
                             <i class="fa fa-edit"></i> Edit
                           </button>
@@ -53,6 +54,7 @@
               @endforeach
             </tbody>
           </table>
+          {{ $posts->links() }}
       </div>
       <div class="col-md-2"></div>
     </div>

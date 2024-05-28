@@ -5,7 +5,8 @@
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <h5 class="text-center">Update Post</h5>
-        <form action="{{ url('posts/'.$post->id) }}" method="POST">
+        <form action="{{route('posts.update', $post->id)}}" method="POST">
+          {{-- url('posts/'.$post->id)  --}}
           @csrf
           @method('PUT')
           <div class="form-group">

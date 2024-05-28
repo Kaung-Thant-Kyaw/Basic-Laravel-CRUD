@@ -4,7 +4,8 @@
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <h5 class="text-center">Create Post</h5>
-        <form action="{{ url('posts') }}" method="POST">
+        <form action="{{route('posts.store')}}" method="POST">
+          {{-- url('posts')  --}}
           @csrf
           <div class="form-group">
             <label for="title">Title</label>
