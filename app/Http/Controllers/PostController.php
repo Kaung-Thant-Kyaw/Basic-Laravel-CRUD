@@ -54,7 +54,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return ("edit $post->id");
+        return view('posts.edit');
     }
 
     /**

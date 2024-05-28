@@ -28,7 +28,7 @@
           @if ($errors->has('content'))
             <div class="text-danger">{{ $errors->first('content') }}</div>
           @endif
-          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary">Create</button>
         </form>
       </div>
  
