@@ -12,7 +12,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index', [
+            'posts' => $posts
+        ]);
     }
 
     /**
@@ -30,8 +33,8 @@ class PostController extends Controller
     {
         $validate = $request->validate(
             [
-                'title' => 'required',
-                'content' => 'required'
+                'title' => ['required', 'max:255'],
+                'content' => ['required']
             ]
         );
         Post::create($validate);
