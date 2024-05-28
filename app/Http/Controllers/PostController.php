@@ -38,7 +38,7 @@ class PostController extends Controller
             ]
         );
         Post::create($validate);
-        return redirect('posts');
+        return redirect('posts')->with('successAlert', 'Have successfully created!');
     }
 
     /**
@@ -72,7 +72,7 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content
         ]);
-        return redirect('posts')->with('successAlert', 'have successfully updated!');
+        return redirect('posts')->with('successAlert', 'Have successfully updated!');
     }
 
     /**
@@ -80,5 +80,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->delete();
+        return redirect('posts')->with('successAlert', 'Have successfully deleted!');
     }
 }

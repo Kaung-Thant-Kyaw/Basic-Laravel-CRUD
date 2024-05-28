@@ -34,14 +34,20 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->content }}</td>
                     <td>
-                      <a href="{{url("posts/".$post->id."/edit")}}">
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i> Edit
+                      <form action="{{ url('posts/'.$post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <a href="{{url("posts/".$post->id."/edit")}}">
+                          <button type="button" class="btn btn-warning btn-sm">
+                            <i class="fa fa-edit"></i> Edit
+                          </button>
+                        </a>
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete?')"
+                        >
+                          <i class="fa fa-trash"></i> Delete
                         </button>
-                      </a>
-                      <button class="btn btn-danger btn-sm">
-                        <i class="fa fa-trash"></i> Delete
-                      </button>
+                      </form>
                     </td>
                   </tr>
               @endforeach
